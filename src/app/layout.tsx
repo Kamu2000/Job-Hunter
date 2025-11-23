@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
 import { ApplicationProvider } from "@/contexts/ApplicationContext";
 import { InterviewProvider } from "@/contexts/InterviewContext";
 import { TaskProvider } from "@/contexts/TaskContext";
 import { ProfileProvider } from "@/contexts/ProfileContext";
 import { ToastProvider } from "@/contexts/ToastContext";
+
+import AppShell from "@/components/AppShell";
 
 export const metadata: Metadata = {
   title: "Job Hunter Pro - Automate Your Job Search",
@@ -25,12 +26,9 @@ export default function RootLayout({
             <ApplicationProvider>
               <InterviewProvider>
                 <TaskProvider>
-                  <div className="app-layout">
-                    <Sidebar />
-                    <main className="main-content">
-                      {children}
-                    </main>
-                  </div>
+                  <AppShell>
+                    {children}
+                  </AppShell>
                 </TaskProvider>
               </InterviewProvider>
             </ApplicationProvider>

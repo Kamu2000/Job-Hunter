@@ -640,16 +640,25 @@ a:hover {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+}
+
 .main-content {
   flex: 1;
   margin-left: 260px;
   min-height: 100vh;
   background: var(--background);
+  transition: margin-left var(--transition-base);
 }
 
 @media (max-width: 768px) {
   .main-content {
-    margin-left: 70px;
+    margin-left: 0;
+    padding-top: 0;
+    /* MobileHeader is sticky */
   }
 }
 
@@ -718,7 +727,7 @@ a:hover {
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .modal-content {
     max-width: 100%;
     margin: var(--spacing-md);
@@ -809,6 +818,7 @@ a:hover {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
