@@ -1,0 +1,142 @@
+.filter-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.filter-tab {
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    background: var(--background-secondary);
+    border-color: var(--primary-500);
+}
+
+.filter-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+}
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-lg);
+}
+
+.kanban-column {
+    background: var(--background-secondary);
+    border-radius: var(--radius-lg);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.column-header {
+    padding: var(--spacing-lg);
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--background-secondary);
+    z-index: 10;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.column-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.column-count {
+    background: var(--surface);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.column-content {
+    flex: 1;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.empty-column {
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    color: var(--text-tertiary);
+}
+
+.empty-column .empty-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+}
+
+.empty-column p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.list-view {
+    display: none;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 1200px) {
+    .kanban-board {
+        grid-template-columns: repeat(3, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .kanban-board {
+        display: none;
+    }
+
+    .list-view {
+        display: block;
+    }
+
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-tabs {
+        gap: var(--spacing-xs);
+    }
+
+    .filter-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.8125rem;
+    }
+}

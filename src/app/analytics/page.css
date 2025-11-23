@@ -1,0 +1,214 @@
+.analytics-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.status-chart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.status-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.status-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9375rem;
+}
+
+.status-label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.status-value {
+    color: var(--text-secondary);
+}
+
+.status-bar {
+    height: 2rem;
+    background: var(--background-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.status-bar-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: width var(--transition-slow);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--spacing-md);
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.timeline-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) 0;
+    min-height: 250px;
+}
+
+.timeline-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.timeline-bar {
+    width: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    min-height: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: var(--spacing-sm);
+    transition: all var(--transition-base);
+}
+
+.timeline-bar:hover {
+    opacity: 0.8;
+    transform: translateY(-4px);
+}
+
+.timeline-count {
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.timeline-label {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-align: center;
+}
+
+.companies-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.company-item {
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.company-rank {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.company-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.company-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.company-count {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.company-percentage {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-600);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.metric-card {
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.metric-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--background-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.metric-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-chart {
+        overflow-x: auto;
+    }
+
+    .timeline-item {
+        min-width: 60px;
+    }
+}
