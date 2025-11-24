@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { useTasks } from '@/contexts/TaskContext';
 import { useApplications } from '@/contexts/ApplicationContext';
 import { useInterviews } from '@/contexts/InterviewContext';
@@ -28,43 +27,9 @@ export default function TasksPage() {
         relatedToId: '',
     });
 
-    // Sort tasks by date (newest first) within their status groups
-    const getSortedTasks = (status: TaskStatus) => {
-        return tasks
-            .filter(t => t.status === status)
-            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-    };
-
-    const todoTasks = getSortedTasks('Todo');
-    const inProgressTasks = getSortedTasks('In Progress');
-    const doneTasks = getSortedTasks('Done');
-
-    const onDragEnd = (result: DropResult) => {
-        const { destination, source, draggableId } = result;
-
-        if (!destination) return;
-
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            return;
-        }
-
-        const newStatus = destination.droppableId as TaskStatus;
-        const currentTask = tasks.find(t => t.id === draggableId);
-
-        if (currentTask && currentTask.status !== newStatus) {
-            // Update task status
-            updateTask(draggableId, {
-                status: newStatus,
-                completedAt: newStatus === 'Done' ? new Date().toISOString().split('T')[0] : undefined
-            });
-
-            // Optional: Show toast for status change
-            // showToast(`Task moved to ${newStatus}`, 'success');
-        }
-    };
+    const todoTasks = tasks.filter(t => t.status === 'Todo');
+    const inProgressTasks = tasks.filter(t => t.status === 'In Progress');
+    const doneTasks = tasks.filter(t => t.status === 'Done');
 
     const handleOpenModal = (task?: Task) => {
         if (task) {
@@ -112,8 +77,8 @@ export default function TasksPage() {
                 name: formData.relatedToType === 'application'
                     ? applications.find(a => a.id === formData.relatedToId)?.jobTitle || ''
                     : formData.relatedToType === 'interview'
-                        ? interviews.find(i => i.id === formData.relatedToId)?.position || ''
-                        : '',
+                    ? interviews.find(i => i.id === formData.relatedToId)?.position || ''
+                    : '',
             } : undefined,
         };
 
@@ -139,97 +104,54 @@ export default function TasksPage() {
         showToast('Task deleted!', 'info');
     };
 
-    const TaskItem = ({ task, index }: { task: Task; index: number }) => (
-        <Draggable draggableId={task.id} index={index}>
-            {(provided, snapshot) => (
-                <div
-                    className={`task-card ${snapshot.isDragging ? 'dragging' : ''}`}
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={{
-                        ...provided.draggableProps.style,
-                    }}
-                >
-                    <div className="task-checkbox">
-                        <input
-                            type="checkbox"
-                            checked={task.status === 'Done'}
-                            onChange={() => handleToggleStatus(task.id)}
-                        />
-                    </div>
-                    <div className="task-content">
-                        <h4 className={`task-title ${task.status === 'Done' ? 'completed' : ''}`}>
-                            {task.title}
-                        </h4>
-                        {task.description && (
-                            <p className="task-description">{task.description}</p>
-                        )}
-                        <div className="task-meta">
-                            <span className={`badge ${getPriorityBadgeClass(task.priority)}`}>
-                                {task.priority}
-                            </span>
-                            {task.dueDate && (
-                                <span className="task-due">
-                                    Due: {new Date(task.dueDate).toLocaleDateString()}
-                                </span>
-                            )}
-                            {task.relatedTo && (
-                                <span className="task-related">
-                                    Related to: {task.relatedTo.name}
-                                </span>
-                            )}
-                        </div>
-                    </div>
-                    <div className="task-actions">
-                        <button
-                            className="btn btn-icon btn-sm btn-ghost"
-                            onClick={() => handleOpenModal(task)}
-                            aria-label="Edit task"
-                        >
-                            ✏️
-                        </button>
-                        <button
-                            className="btn btn-icon btn-sm btn-ghost task-delete"
-                            onClick={() => handleDelete(task.id)}
-                            aria-label="Delete task"
-                        >
-                            🗑️
-                        </button>
-                    </div>
-                </div>
-            )}
-        </Draggable>
-    );
-
-    const TaskColumn = ({ title, status, tasks }: { title: string; status: string; tasks: Task[] }) => (
-        <div className="task-column">
-            <div className="column-header">
-                <h3 className="column-title">{title}</h3>
-                <span className="column-count">{tasks.length}</span>
+    const TaskItem = ({ task }: { task: any }) => (
+        <div className="task-card">
+            <div className="task-checkbox">
+                <input
+                    type="checkbox"
+                    checked={task.status === 'Done'}
+                    onChange={() => handleToggleStatus(task.id)}
+                />
             </div>
-            <Droppable droppableId={status}>
-                {(provided, snapshot) => (
-                    <div
-                        className={`column-content ${snapshot.isDraggingOver ? 'dragging-over' : ''}`}
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                    >
-                        {tasks.map((task, index) => (
-                            <TaskItem key={task.id} task={task} index={index} />
-                        ))}
-                        {provided.placeholder}
-                        {tasks.length === 0 && !snapshot.isDraggingOver && (
-                            <div className="empty-column">
-                                <span className="empty-icon">
-                                    {status === 'Todo' ? '✅' : status === 'In Progress' ? '🔄' : '🎉'}
-                                </span>
-                                <p>No tasks {status.toLowerCase()}</p>
-                            </div>
-                        )}
-                    </div>
+            <div className="task-content">
+                <h4 className={`task-title ${task.status === 'Done' ? 'completed' : ''}`}>
+                    {task.title}
+                </h4>
+                {task.description && (
+                    <p className="task-description">{task.description}</p>
                 )}
-            </Droppable>
+                <div className="task-meta">
+                    <span className={`badge ${getPriorityBadgeClass(task.priority)}`}>
+                        {task.priority}
+                    </span>
+                    {task.dueDate && (
+                        <span className="task-due">
+                            Due: {new Date(task.dueDate).toLocaleDateString()}
+                        </span>
+                    )}
+                    {task.relatedTo && (
+                        <span className="task-related">
+                            Related to: {task.relatedTo.name}
+                        </span>
+                    )}
+                </div>
+            </div>
+            <div style={{ display: 'flex', gap: '0.25rem' }}>
+                <button
+                    className="btn btn-icon btn-sm btn-ghost"
+                    onClick={() => handleOpenModal(task)}
+                    aria-label="Edit task"
+                >
+                    ✏️
+                </button>
+                <button
+                    className="btn btn-icon btn-sm btn-ghost task-delete"
+                    onClick={() => handleDelete(task.id)}
+                    aria-label="Delete task"
+                >
+                    🗑️
+                </button>
+            </div>
         </div>
     );
 
@@ -246,14 +168,64 @@ export default function TasksPage() {
                         ➕ Create Task
                     </button>
                 </div>
-
-                <DragDropContext onDragEnd={onDragEnd}>
-                    <div className="tasks-board">
-                        <TaskColumn title="To Do" status="Todo" tasks={todoTasks} />
-                        <TaskColumn title="In Progress" status="In Progress" tasks={inProgressTasks} />
-                        <TaskColumn title="Done" status="Done" tasks={doneTasks} />
+                <div className="tasks-board">
+                    {/* To Do Column */}
+                    <div className="task-column">
+                        <div className="column-header">
+                            <h3 className="column-title">To Do</h3>
+                            <span className="column-count">{todoTasks.length}</span>
+                        </div>
+                        <div className="column-content">
+                            {todoTasks.map(task => (
+                                <TaskItem key={task.id} task={task} />
+                            ))}
+                            {todoTasks.length === 0 && (
+                                <div className="empty-column">
+                                    <span className="empty-icon">✅</span>
+                                    <p>No tasks to do</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </DragDropContext>
+
+                    {/* In Progress Column */}
+                    <div className="task-column">
+                        <div className="column-header">
+                            <h3 className="column-title">In Progress</h3>
+                            <span className="column-count">{inProgressTasks.length}</span>
+                        </div>
+                        <div className="column-content">
+                            {inProgressTasks.map(task => (
+                                <TaskItem key={task.id} task={task} />
+                            ))}
+                            {inProgressTasks.length === 0 && (
+                                <div className="empty-column">
+                                    <span className="empty-icon">🔄</span>
+                                    <p>No tasks in progress</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Done Column */}
+                    <div className="task-column">
+                        <div className="column-header">
+                            <h3 className="column-title">Done</h3>
+                            <span className="column-count">{doneTasks.length}</span>
+                        </div>
+                        <div className="column-content">
+                            {doneTasks.map(task => (
+                                <TaskItem key={task.id} task={task} />
+                            ))}
+                            {doneTasks.length === 0 && (
+                                <div className="empty-column">
+                                    <span className="empty-icon">🎉</span>
+                                    <p>No completed tasks</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
 
                 {/* Add/Edit Task Modal */}
                 {showModal && (
