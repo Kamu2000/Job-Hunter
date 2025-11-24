@@ -2,48 +2,45 @@
 
 /* ===== CSS VARIABLES ===== */
 :root {
-  /* Primary Colors - Electric Violet & Blue */
-  --primary-50: #f0f4ff;
-  --primary-100: #e0e7ff;
-  --primary-200: #c7d2fe;
-  --primary-300: #a5b4fc;
-  --primary-400: #818cf8;
-  --primary-500: #6366f1;
-  --primary-600: #4f46e5;
-  --primary-700: #4338ca;
-  --primary-800: #3730a3;
-  --primary-900: #312e81;
+  /* Apple System Colors */
+  --primary-50: #f5f7ff;
+  --primary-100: #ebf0ff;
+  --primary-200: #d6e0ff;
+  --primary-300: #b3c7ff;
+  --primary-400: #809fff;
+  --primary-500: #4d77ff;
+  --primary-600: #1a53ff;
+  --primary-700: #0033cc;
+  --primary-800: #002299;
+  --primary-900: #001166;
 
-  /* Success Colors - Neon Green */
-  --success-400: #4ade80;
-  --success-500: #22c55e;
-  --success-600: #16a34a;
+  /* Functional Colors - Apple Style */
+  --success-400: #34c759;
+  --success-500: #30d158;
+  --success-600: #28cd41;
 
-  /* Warning Colors - Amber Glow */
-  --warning-400: #fbbf24;
-  --warning-500: #f59e0b;
-  --warning-600: #d97706;
+  --warning-400: #ffcc00;
+  --warning-500: #ffd60a;
+  --warning-600: #ff9f0a;
 
-  /* Danger Colors - Red Glow */
-  --danger-400: #f87171;
-  --danger-500: #ef4444;
-  --danger-600: #dc2626;
+  --danger-400: #ff3b30;
+  --danger-500: #ff453a;
+  --danger-600: #ff2d55;
 
-  /* Neutral Colors - Glass Theme */
-  --gray-50: rgba(255, 255, 255, 0.95);
-  --gray-100: rgba(255, 255, 255, 0.9);
-  --gray-200: rgba(255, 255, 255, 0.8);
-  --gray-300: rgba(255, 255, 255, 0.6);
-  --gray-400: rgba(255, 255, 255, 0.4);
-  --gray-500: rgba(255, 255, 255, 0.3);
-  --gray-600: rgba(255, 255, 255, 0.2);
-  --gray-700: rgba(255, 255, 255, 0.1);
-  --gray-800: rgba(0, 0, 0, 0.2);
-  --gray-900: rgba(0, 0, 0, 0.4);
+  /* Neutral Colors */
+  --gray-50: #f2f2f7;
+  --gray-100: #e5e5ea;
+  --gray-200: #d1d1d6;
+  --gray-300: #c7c7cc;
+  --gray-400: #aeaeb2;
+  --gray-500: #8e8e93;
+  --gray-600: #636366;
+  --gray-700: #48484a;
+  --gray-800: #3a3a3c;
+  --gray-900: #2c2c2e;
 
-  /* Liquid Glass Theme Variables */
-  --background: #0f172a;
-  /* Fallback */
+  /* Liquid Glass / visionOS Theme */
+  --background: #000000;
   --background-image:
     radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
     radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
@@ -51,34 +48,37 @@
     radial-gradient(at 0% 100%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
     radial-gradient(at 100% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
 
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-elevated: rgba(255, 255, 255, 0.1);
-  --surface-hover: rgba(255, 255, 255, 0.15);
+  /* Glass Materials - visionOS */
+  --surface: rgba(30, 30, 30, 0.4);
+  /* Darker, more translucent */
+  --surface-elevated: rgba(40, 40, 40, 0.5);
+  --surface-hover: rgba(50, 50, 50, 0.6);
   --background-secondary: rgba(0, 0, 0, 0.2);
 
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-tertiary: rgba(255, 255, 255, 0.45);
 
-  --border: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.15);
+  --border-light: rgba(255, 255, 255, 0.08);
 
-  --glass-blur: blur(16px);
-  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* Apple Glass Effect */
+  --glass-blur: blur(25px) saturate(180%);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 50px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.4);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  --gradient-success: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-  --gradient-warning: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-  --gradient-danger: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
-  --gradient-purple: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
-  --gradient-blue: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --gradient-primary: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
+  --gradient-success: linear-gradient(135deg, #30D158 0%, #28CD41 100%);
+  --gradient-warning: linear-gradient(135deg, #FFD60A 0%, #FF9F0A 100%);
+  --gradient-danger: linear-gradient(135deg, #FF453A 0%, #FF2D55 100%);
+  --gradient-purple: linear-gradient(135deg, #BF5AF2 0%, #5E5CE6 100%);
+  --gradient-blue: linear-gradient(135deg, #0A84FF 0%, #64D2FF 100%);
+  --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -88,29 +88,28 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
-  /* Border Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
+  /* Border Radius - Apple Rounded */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-base: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-slow: 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 /* Dark Mode is default for Liquid Glass */
 [data-theme="dark"] {
-  /* Same as root since we are enforcing dark glass */
-  --background: #0f172a;
-  --surface: rgba(0, 0, 0, 0.2);
-  --surface-elevated: rgba(0, 0, 0, 0.3);
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --border: rgba(255, 255, 255, 0.1);
+  --background: #000000;
+  --surface: rgba(30, 30, 30, 0.4);
+  --surface-elevated: rgba(40, 40, 40, 0.5);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --border: rgba(255, 255, 255, 0.15);
 }
 
 /* ===== RESET & BASE STYLES ===== */
