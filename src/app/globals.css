@@ -28,57 +28,56 @@
   --danger-600: #ff2d55;
 
   /* Neutral Colors */
-  --gray-50: #f2f2f7;
-  --gray-100: #e5e5ea;
-  --gray-200: #d1d1d6;
-  --gray-300: #c7c7cc;
-  --gray-400: #aeaeb2;
-  --gray-500: #8e8e93;
-  --gray-600: #636366;
-  --gray-700: #48484a;
-  --gray-800: #3a3a3c;
-  --gray-900: #2c2c2e;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 
-  /* Liquid Glass / visionOS Theme */
-  --background: #000000;
+  /* Light Liquid Glass Theme (Default) */
+  --background: #ffffff;
   --background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(210, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(220, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(260, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(260, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(210, 100%, 96%, 1) 0, transparent 50%);
 
-  /* Glass Materials - visionOS */
-  --surface: rgba(30, 30, 30, 0.4);
-  /* Darker, more translucent */
-  --surface-elevated: rgba(40, 40, 40, 0.5);
-  --surface-hover: rgba(50, 50, 50, 0.6);
-  --background-secondary: rgba(0, 0, 0, 0.2);
+  /* Glass Materials - Light */
+  --surface: rgba(255, 255, 255, 0.65);
+  --surface-elevated: rgba(255, 255, 255, 0.85);
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --background-secondary: rgba(240, 240, 240, 0.5);
 
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.75);
-  --text-tertiary: rgba(255, 255, 255, 0.45);
+  --text-primary: #1d1d1f;
+  --text-secondary: rgba(60, 60, 67, 0.85);
+  --text-tertiary: rgba(60, 60, 67, 0.5);
 
-  --border: rgba(255, 255, 255, 0.15);
-  --border-light: rgba(255, 255, 255, 0.08);
+  --border: rgba(0, 0, 0, 0.1);
+  --border-light: rgba(0, 0, 0, 0.05);
 
   /* Apple Glass Effect */
-  --glass-blur: blur(25px) saturate(180%);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --glass-blur: blur(20px) saturate(180%);
+  --glass-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.05);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.15);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
-  --gradient-success: linear-gradient(135deg, #30D158 0%, #28CD41 100%);
-  --gradient-warning: linear-gradient(135deg, #FFD60A 0%, #FF9F0A 100%);
-  --gradient-danger: linear-gradient(135deg, #FF453A 0%, #FF2D55 100%);
-  --gradient-purple: linear-gradient(135deg, #BF5AF2 0%, #5E5CE6 100%);
-  --gradient-blue: linear-gradient(135deg, #0A84FF 0%, #64D2FF 100%);
-  --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --gradient-primary: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  --gradient-success: linear-gradient(135deg, #34C759 0%, #30D158 100%);
+  --gradient-warning: linear-gradient(135deg, #FFCC00 0%, #FF9500 100%);
+  --gradient-danger: linear-gradient(135deg, #FF3B30 0%, #FF2D55 100%);
+  --gradient-purple: linear-gradient(135deg, #AF52DE 0%, #5856D6 100%);
+  --gradient-blue: linear-gradient(135deg, #007AFF 0%, #5AC8FA 100%);
+  --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -102,14 +101,36 @@
   --transition-slow: 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* Dark Mode is default for Liquid Glass */
+/* Dark Mode - Liquid Glass / visionOS Theme */
 [data-theme="dark"] {
   --background: #000000;
+  --background-image:
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(339, 49%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+
   --surface: rgba(30, 30, 30, 0.4);
   --surface-elevated: rgba(40, 40, 40, 0.5);
+  --surface-hover: rgba(50, 50, 50, 0.6);
+  --background-secondary: rgba(0, 0, 0, 0.2);
+
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-tertiary: rgba(255, 255, 255, 0.45);
+
   --border: rgba(255, 255, 255, 0.15);
+  --border-light: rgba(255, 255, 255, 0.08);
+
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.4);
+
+  --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 /* ===== RESET & BASE STYLES ===== */
